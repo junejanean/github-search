@@ -1,0 +1,14 @@
+{
+  "name": "githubsearch",
+  "version": "1.0.0",
+  "description": "gitHub username search",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Janean Mann",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
