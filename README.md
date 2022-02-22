@@ -1,4 +1,4 @@
-This is simple gitHub username search, my first javascript project.
+This is simple gitHub username search, written in Vanilla Javascript.
 
 
 
