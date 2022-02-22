@@ -16,8 +16,8 @@ inputBox.onkeyup = (e) => {
     let emptyArray = [];
     if (userData) {
         emptyArray = suggestions.filter((data) => {
-            // filtering array value nad user char to lowercaaase and return only those word
-            //which startss with user entered word.
+            // filtering array value and user char to lowercase and return only the value
+            //which starts with user entered word.
             return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
            
         });
@@ -36,7 +36,7 @@ inputBox.onkeyup = (e) => {
         searchWrapper.classList.remove("active"); // hide autocomplete box
     }
 }
-
+// Select suggestion in autocomplete box
 function select(element) {
     let selectUserData = element.textContent;
     console.log(selectUserData);
@@ -44,6 +44,7 @@ function select(element) {
     searchWrapper.classList.remove("active"); // hide autocomplete box
 }
 
+// Populate autocomplete box
 function showSuggestions(list) {
     let listData;
     if(!list.length) {
@@ -56,19 +57,20 @@ function showSuggestions(list) {
     suggBox.innerHTML = listData;
 }
 
-
+// Listening event on submit to query usernames via API
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
     let search = document.getElementById("search").value;
 
     let originalName = search.split(' ').join('');
-    alert(originalName);
+    // alert(originalName);
 
     fetch("https://api.github.com/users/"+originalName)
     .then((result) => result.json())
     .then((data) => {
        console.log(data);
+       searchWrapper.classList.remove("active"); // hide autocomplete box
 
        main.innerHTML = 
        `<div class="card">
@@ -92,29 +94,28 @@ form.addEventListener('submit', function(e) {
 })
 
 
-// getUser("junejanean");
+// ATTEMPT AT ADDING IN THE REPOS URL
 
-// async function getUser(username) {
-//     const resp = await fetch(API_URL + username);
+// async function getUser(data) {
+//     const resp = await fetch("https://api.github.com/users/"+originalName+"/repos");
 //     const respData = await resp.json();
 
-//     createUserCard(respData);
+//     addReposInfo(respData);
 // }
 
-function getRepos(data) {
-    alert("createUserCard is ON");
-    const cardHTML =
-     `<div class="card">
-          <div>
-            <img class="avatar" src="${data.avatar_url}" alt="${data.name}" />
-          </div>
-          <div class="user-info">
-              <h2>${data.name}</h2>
-              <h3>${data.login}</h3>
-              <p>${data.bio}</p>
-          </div>
-      </div>`
-      
 
-      main.innerHTML = cardHTML;
-}
+// function addReposInfo(repos) {
+//     const reposElements = document.getElementById("repos");
+//     alert("createRepos is ON")
+
+//     repos.forEach((repo) => {
+//         repoEl = document.createElement("a");
+//         repoEl.classList.add("repo");
+//         repoEl.href = repo.html_url;
+//         repoEl.target = "_blank";
+//         repoEl.innerText = repo.name;
+//         reposElements.appendChild(repoEl);
+
+//         console.log(repo);
+//     })
+// }
