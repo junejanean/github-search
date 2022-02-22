@@ -174,3 +174,10 @@ p {
     font-size: 0.9rem;
     margin: 0.5rem 0.5rem 0 0;
 }
+
+@media (max-width: 600px) {
+    .card {
+        display: grid;
+        justify-items: center;
+    }
+}
