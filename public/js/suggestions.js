@@ -45,3 +45,5 @@ const suggestions = [
 'Santos',
 'Curtis'
 ]
+
+//export default suggestions;
